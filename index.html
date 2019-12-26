@@ -5,6 +5,82 @@
         div.opc {
             opacity: 0.4;
         }
+
+        .board-column {
+            left: 0;
+            right: 0;
+            z-index: 1;
+            height: 80vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .board-column.muuri-item-releasing {
+            z-index: 2;
+        }
+
+        .board-column.muuri-item-dragging {
+            z-index: 3;
+            cursor: move;
+        }
+
+        .board-column-header {
+            height: 8vh;
+            line-height: 10vh;
+            overflow: hidden;
+        }
+
+        .board-column-footer {
+            height: 8vh;
+            min-height: 40px;
+            line-height: 10vh;
+            overflow: hidden;;
+        }
+
+        .board-column.todo .board-column-header {
+            background: #4A9FF9;
+        }
+
+        .board-column.working .board-column-header {
+            background: #f9944a;
+        }
+
+        .board-column.done .board-column-header {
+            background: #2ac06d;
+        }
+
+        .board-item {
+            position: absolute;
+            width: 100%;
+            margin: 5px 0;
+        }
+
+        .board-item.muuri-item-releasing {
+            z-index: 9998;
+        }
+
+        .board-item.muuri-item-dragging {
+            z-index: 9999;
+            cursor: move;
+        }
+
+        .board-item.muuri-item-hidden {
+            z-index: 0;
+        }
+
+        .board-item-content {
+            font-size: 17px;
+            cursor: pointer;
+        }
+
+        #showTaskDiv {
+            height: 99.9vh;
+            overflow: hidden;
+        }
+
+        .no-overflow {
+            overflow: hidden;
+        }
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -12,36 +88,98 @@
 
     <link rel="stylesheet" href="./css/bootstrap.css">
 </head>
-<body>
-<div class="container-fluid bg-light" style=" height: 99.9vh">
-    <div class="row" style=" height: 99.9vh">
-        <div id="menuDiv" class="bg-info col-6 col-xl-3 col-lg-4 col-md-5 col-sm-5 d-none d-sm-block"
+<body class="no-overflow">
+<div class="container-fluid bg-light no-overflow" style=" height: 99.9vh">
+    <div class="row no-overflow" style=" height: 99.9vh">
+        <div id="menuDiv" class="bg-info col-6 col-xl-3 col-lg-4 col-md-5 col-sm-5 d-none d-sm-block no-overflow"
              style="height: 99.9vh;z-index: 9999;">
 
         </div>
-        <div id="showTaskDiv" class="bg-light col-12 col-xl-9 col-lg-8 col-md-7 col-sm-7"
-             style=" height: 99.9vh; max-height: 99.9vh;overflow-y: auto;">
+        <div id="showTaskDiv" class="bg-light col-12 col-xl-9 col-lg-8 col-md-7 col-sm-7 position-relative">
             <button id="showMenuBtn" class="btn btn-sm btn-outline-info d-sm-none d-block">menu</button>
-            <div class="shadow p-3 mb-3 bg-light rounded text-primary">No shadow</div>
-            <div class="shadow-sm p-3 mb-3 bg-white rounded">Small shadow</div>
-            <div class="shadow p-3 mb-3 bg-white rounded">Regular shadow</div>
-            <div class="shadow-lg p-3 mb-3 bg-white rounded">Larger shadow</div>
-            <div class="shadow p-3 mb-3 bg-light rounded">No shadow</div>
-            <div class="shadow-sm p-3 mb-3 bg-white rounded">Small shadow</div>
-            <div class="shadow p-3 mb-3 bg-white rounded">Regular shadow</div>
-            <div class="shadow-lg p-3 mb-3 bg-white rounded">Larger shadow</div>
-            <div class="shadow p-3 mb-3 bg-light rounded">No shadow</div>
-            <div class="shadow-sm p-3 mb-3 bg-light rounded text-primary">
-                <p class="text-break">
-                    mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
-                </p>
+            <div class="board-column-header bg-dark position-relative w-100 rounded text-center text-white p-1 m-1">To do</div>
+            <div class="board-column todo w-99 position-relative m-1 bg-light rounded">
+                <div class="board-column-content position-relative rounded">
+                    <div class="board-item">
+                        <div class="board-item-content position-relative shadow rounded p-2 bg-light">
+                            <span class="d-none d-sm-inline">Item #</span>1
+                        </div>
+                    </div>
+                    <div class="board-item">
+                        <div class="board-item-content position-relative shadow rounded p-2 bg-light">
+                            <span class="d-none d-sm-inline">Item #</span>2
+                        </div>
+                    </div>
+                    <div class="board-item">
+                        <div class="board-item-content position-relative shadow rounded p-2 bg-light">
+                            <span class="d-none d-sm-inline">Item #</span>3
+                        </div>
+                    </div>
+                    <div class="board-item">
+                        <div class="board-item-content position-relative shadow rounded p-2 bg-light">
+                            <span class="d-none d-sm-inline">Item #</span>4
+                        </div>
+                    </div>
+                    <div class="board-item">
+                        <div class="board-item-content position-relative shadow rounded p-2 bg-light">
+                            <span class="d-none d-sm-inline">Item #</span>5
+                        </div>
+                    </div>
+                    <div class="board-item">
+                        <div class="board-item-content position-relative shadow rounded p-2 bg-light">
+                            <span class="d-none d-sm-inline">Item #</span>1
+                        </div>
+                    </div>
+                    <div class="board-item">
+                        <div class="board-item-content position-relative shadow rounded p-2 bg-light">
+                            <span class="d-none d-sm-inline">Item #</span>2
+                        </div>
+                    </div>
+                    <div class="board-item">
+                        <div class="board-item-content position-relative shadow rounded p-2 bg-light">
+                            <span class="d-none d-sm-inline">Item #</span>3
+                        </div>
+                    </div>
+                    <div class="board-item">
+                        <div class="board-item-content position-relative shadow rounded p-2 bg-light">
+                            <span class="d-none d-sm-inline">Item #</span>4
+                        </div>
+                    </div>
+                    <div class="board-item">
+                        <div class="board-item-content position-relative shadow rounded p-2 bg-light">
+                            <span class="d-none d-sm-inline">Item #</span>5
+                        </div>
+                    </div>
+                    <div class="board-item">
+                        <div class="board-item-content position-relative shadow rounded p-2 bg-light">
+                            <span class="d-none d-sm-inline">Item #</span>1
+                        </div>
+                    </div>
+                    <div class="board-item">
+                        <div class="board-item-content position-relative shadow rounded p-2 bg-light">
+                            <span class="d-none d-sm-inline">Item #</span>2
+                        </div>
+                    </div>
+                    <div class="board-item">
+                        <div class="board-item-content position-relative shadow rounded p-2 bg-light">
+                            <span class="d-none d-sm-inline">Item #</span>3
+                        </div>
+                    </div>
+                    <div class="board-item">
+                        <div class="board-item-content position-relative shadow rounded p-2 bg-light">
+                            <span class="d-none d-sm-inline">Item #</span>4
+                        </div>
+                    </div>
+                    <div class="board-item">
+                        <div class="board-item-content position-relative shadow rounded p-2 bg-light">
+                            <span class="d-none d-sm-inline">Item #</span>5
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="shadow p-3 mb-3 bg-white rounded">Regular shadow</div>
-            <div class="shadow-lg p-3 mb-3 bg-white rounded">Larger shadow</div>
-            <div class="shadow p-3 mb-3 bg-light rounded">No shadow</div>
-            <div class="shadow-sm p-3 mb-3 bg-white rounded">Small shadow</div>
-            <div class="shadow p-3 mb-3 bg-white rounded">Regular shadow</div>
-            <div class="shadow-lg p-3 mb-3 bg-white rounded">Larger shadow</div>
+            <div class="board-column-footer position-relative w-100 bg-info rounded text-center p-1 m-1">
+                add task
+            </div>
         </div>
     </div>
 </div>
@@ -51,6 +189,11 @@
 </script>
 <script src="./js/popper.js"></script>
 <script src="./js/bootstrap.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/web-animations/2.3.1/web-animations.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+<script src="https://unpkg.com/muuri@0.6.3/dist/muuri.js"></script>
+
 <script src="index.js"></script>
 </body>
 </html>
