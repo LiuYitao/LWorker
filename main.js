@@ -12,7 +12,7 @@ function createWindow() {
         width: global.storeObjects.screenSize.width * 3 / 4,
         height: global.storeObjects.screenSize.height * 7 / 8,
         minWidth: Math.max(global.storeObjects.screenSize.width / 3, 150),
-        minHeight: global.storeObjects.screenSize.height / 2,
+        minHeight: global.storeObjects.screenSize.height / 1.6,
         webPreferences: {
             preload: path.join(__dirname, 'preload.js'),
             nodeIntegration: true
