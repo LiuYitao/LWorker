@@ -102,11 +102,11 @@
         }
 
         #menuHeaderDiv {
-            height: 80px;
+            height: 60px;
         }
 
         #menuBtnsDiv {
-            height: 300px;
+            height: 272px;
         }
     </style>
     <meta charset="UTF-8">
@@ -114,6 +114,7 @@
     <title>Hello World!</title>
 
     <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="./css/font-awesome.min.css">
 </head>
 <body class="no-overflow">
 <div class="container-fluid bg-light no-overflow" style=" height: 99.9vh">
@@ -125,9 +126,13 @@
                 <span class="text-dark font-weight-bold d-block"> LWorker</span>
                 <span class="font-italic"> better work, better life</span>
             </div>
-            <div id="menuContentDiv" class="scroll-bar-div p-1">
-                <div id="menuBtnsDiv" class="bg-danger">
-
+            <div id="menuContentDiv" class="scroll-bar-div p-0">
+                <div id="menuBtnsDiv" class="bg-light list-group-flush">
+                    <a class="menu-btn list-group-item text-decoration-none text-dark" href="#"><i class="fa fa-exclamation-circle fa-fw" aria-hidden="true"></i>&nbsp; 今日必做任务</a>
+                    <a class="menu-btn list-group-item text-decoration-none text-dark" href="#"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i>&nbsp; 未完成任务</a>
+                    <a class="menu-btn list-group-item text-decoration-none text-dark" href="#"><i class="fa fa-check-circle-o fa-fw" aria-hidden="true"></i>&nbsp; 已完成任务</a>
+                    <a class="menu-btn list-group-item text-decoration-none text-dark" href="#"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i>&nbsp; 定时任务</a>
+                    <a class="menu-btn list-group-item text-decoration-none text-dark" href="#"><i class="fa fa-history fa-fw" aria-hidden="true"></i>&nbsp; 历史任务</a>
                 </div>
                 <div id="projectsDiv">
 
