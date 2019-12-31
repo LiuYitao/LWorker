@@ -6,7 +6,7 @@
   "scripts": {
     "start": "electron ."
   },
-  "repository": "https://github.com/electron/electron-quick-start",
+  "repository": "https://github.com/LiuYitao/LWorker",
   "keywords": [
     "Electron",
     "quick",
@@ -17,9 +17,10 @@
   "author": "YitaoLiu",
   "license": "CC0-1.0",
   "devDependencies": {
-
+    "electron": "^7.1.7"
   },
   "dependencies": {
-
+    "better-sqlite3": "^5.4.3",
+    "electron-rebuild": "^1.8.8"
   }
 }
